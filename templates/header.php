@@ -1,11 +1,12 @@
 <?php
-  require_once("globals.php");
-  require_once("db.php");
+require_once("globals.php");
+require_once("db.php");
 
-  $flashMessage = [];
+$flashMessage = [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +20,9 @@
   <!-- CSS -->
   <link rel="stylesheet" href="<?= $BASE_URL ?>css/styles.css">
 </head>
+
 <body>
-<header>
+  <header>
     <nav id="main-navbar" class="navbar navbar-expand-lg">
       <a href="<?= $BASE_URL ?>" class="navbar-brand">
         <img src="<?= $BASE_URL ?>img/logo.svg" alt="MovieStar" id="logo">
@@ -44,8 +46,8 @@
       </div>
     </nav>
   </header>
-  <?php if(!empty($flashMessage["msg"])): ?>
+  <?php if (!empty($flashMessage["msg"])) : ?>
+    <div class="msg-container">
+      <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
+    </div>
   <?php endif; ?>
-<div class="msg-container">
-  <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
-</div>
