@@ -33,6 +33,10 @@
 
           $user = new User();
 
+          // Criação de token e senha
+          $userToken = $user->generateToken();
+          $finalPassword = $user->generatePassword($password);
+
           $user->name = $name;
           $user->lastname = $lastname;
           $user->email = $email;
