@@ -216,7 +216,8 @@
 }
 
 .table-movie-title {
-  color: #FFF;
+  color: #000;
+  text-decoration: none;
   font-weight: bold;
   transition: .5s;
 }
