@@ -78,6 +78,32 @@
 
     }
 
+  } else if($type === "delete") {
+
+    // Recebe os dados do form
+    $id = filter_input(INPUT_POST, "id");
+
+    $movie = $movieDao->findById($id);
+
+    if($movie) {
+
+      // Verificar se o filme é do usuário
+      if($movie->user_id === $userData->id) {
+
+        $movieDao->destroy($movie->id);
+
+      } else {
+
+        $message->setMessage("Informações inválidas!", "error", "index.php");
+
+      }
+
+    } else {
+
+      $message->setMessage("Informações inválidas!", "error", "index.php");
+
+    }
+
   } else {
 
     $message->setMessage("Informações inválidas!", "error", "index.php");
