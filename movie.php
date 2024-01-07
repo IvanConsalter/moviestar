@@ -35,11 +35,19 @@ if ($movie->image == "") {
 // Checar se o filme é do usuário
 $userOwnsMovie = false;
 
-$movieReviews = $reviewDao->getMoviesReview($id);
+if(!empty($userData)) {
 
-// Resgatar as revies do filme
-$alreadyReviewed = false;
+  if($userData->id === $movie->user_id) {
+    $userOwnsMovie = true;
+  }
 
+  // Resgatar as reviews do filme
+  $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
+
+}
+
+// Resgatar as reviews do filme
+$movieReviews = $reviewDao->getMoviesReview($movie->id);
 
 ?>
 <div id="main-container" class="container-fluid">

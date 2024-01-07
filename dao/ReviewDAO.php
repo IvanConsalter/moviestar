@@ -86,6 +86,19 @@
 
     public function hasAlreadyReviewed($id, $userId) {
 
+      $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movie_id = :movie_id AND user_id = :user_id");
+
+      $stmt->bindParam(":movie_id", $id);
+      $stmt->bindParam(":user_id", $userId);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() > 0) {
+        return true;
+      } else {
+        return false;
+      }
+
     }
 
     public function getRatings($id) {
