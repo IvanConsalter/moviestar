@@ -52,9 +52,36 @@
     }
 
     public function getMoviesReview($id) {
+
+      $reviews = [];
+
+      $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movie_id = :movie_id");
+
+      $stmt->bindParam(":movie_id", $id);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() > 0) {
+
+        $reviewsData = $stmt->fetchAll();
+
+        $userDao = new UserDao($this->conn, $this->url);
+
+        foreach($reviewsData as $review) {
+
+          $reviewObject = $this->buildReview($review);
+
+          $reviews[] = $reviewObject;
+        }
+
+      }
+
+      return $reviews;
+
     }
 
     public function hasAlreadyReviewed($id, $userId) {
+      
     }
 
     public function getRatings($id) {
