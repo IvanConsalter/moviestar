@@ -71,6 +71,10 @@
 
           $reviewObject = $this->buildReview($review);
 
+          $user = $userDao->findById($reviewObject->user_id);
+
+          $reviewObject->user = $user;
+
           $reviews[] = $reviewObject;
         }
 
@@ -81,7 +85,7 @@
     }
 
     public function hasAlreadyReviewed($id, $userId) {
-      
+
     }
 
     public function getRatings($id) {
