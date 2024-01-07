@@ -449,6 +449,17 @@
 }
 /* End Home */
 
+/* Search */
+#search-title {
+  font-size: 40px;
+}
+
+#search-result,
+.back-link {
+  color: #F5C518;
+}
+/* End Search */
+
 /* Footer */
 #footer {
   background-color: #000;
