@@ -35,15 +35,14 @@ if ($movie->image == "") {
 // Checar se o filme é do usuário
 $userOwnsMovie = false;
 
-if(!empty($userData)) {
+if (!empty($userData)) {
 
-  if($userData->id === $movie->user_id) {
+  if ($userData->id === $movie->user_id) {
     $userOwnsMovie = true;
   }
 
   // Resgatar as reviews do filme
   $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
-
 }
 
 // Resgatar as reviews do filme
@@ -52,20 +51,22 @@ $movieReviews = $reviewDao->getMoviesReview($movie->id);
 ?>
 <div id="main-container" class="container-fluid">
   <div class="row">
-    <div class="offset-md-1 col-md-6 movie-container">
-      <h1 class="page-title"><?= $movie->title ?></h1>
-      <p class="movie-details">
-        <span>Duração: <?= $movie->length ?></span>
-        <span class="pipe"></span>
-        <span><?= $movie->category ?></span>
-        <span class="pipe"></span>
-        <span><i class="fas fa-star"></i><?= $movie->rating ?></span>
-      </p>
-      <iframe src="<?= $movie->trailer ?>" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <p><?= $movie->description ?></p>
-    </div>
-    <div class="col-md-4 movie-image-container">
-      <img src="<?= $BASE_URL ?>img/movies/<?= $movie->image ?>" alt="movie image">
+    <div class="movie-container-content">
+      <div class="movie-container">
+        <h1 class="page-title"><?= $movie->title ?></h1>
+        <p class="movie-details">
+          <span>Duração: <?= $movie->length ?></span>
+          <span class="pipe"></span>
+          <span><?= $movie->category ?></span>
+          <span class="pipe"></span>
+          <span><i class="fas fa-star"></i><?= $movie->rating ?></span>
+        </p>
+        <iframe src="<?= $movie->trailer ?>" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p><?= $movie->description ?></p>
+      </div>
+      <div class="movie-image-container">
+        <img src="<?= $BASE_URL ?>img/movies/<?= $movie->image ?>" alt="movie image">
+      </div>
     </div>
     <div class="offset-md-1 col-md-10" id="reviews-container">
       <h3 id="reviews-title">Avaliações:</h3>
@@ -102,10 +103,10 @@ $movieReviews = $reviewDao->getMoviesReview($movie->id);
         </div>
       <?php endif; ?>
       <!-- Comentários -->
-      <?php foreach($movieReviews as $review): ?>
+      <?php foreach ($movieReviews as $review) : ?>
         <?php require("templates/user_review.php"); ?>
       <?php endforeach; ?>
-      <?php if(count($movieReviews) == 0): ?>
+      <?php if (count($movieReviews) == 0) : ?>
         <p class="empty-list">Não há comentários para este filme ainda...</p>
       <?php endif; ?>
     </div>

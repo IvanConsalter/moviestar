@@ -318,6 +318,14 @@
 /* Fim Dashboard */
 
 /* Movie */
+.movie-container-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 .movie-container {
   text-align: center;
 }
@@ -398,6 +406,7 @@
 .movie-card {
   background-color: #1A1A1A;
   width: 18%;
+  min-width: 230px;
   margin-bottom: 30px;
   margin-left: 1%;
   margin-right: 1%;
@@ -507,3 +516,102 @@
   margin: 30px 0;
 }
 /* End Footer */
+
+/* Responsivo */
+@media(max-width: 450px) {
+
+  #main-container {
+    padding: 20px;
+  }
+
+  /* Home */
+  #search-form {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #search-form .form-control {
+    width: 85%;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .movies-container {
+    padding: 0 15px;
+  }
+
+  .movie-card {
+    width: 100%;
+  }
+
+  .movie-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movie-details span {
+    padding-bottom: 8px;
+  }
+
+  .pipe {
+    display: none;
+  }
+
+  .movie-container iframe {
+    max-width: 100% !important;
+  }
+
+  #reviews-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #review-form-container select,
+  #review-form-container textarea {
+    width: 100%;
+  }
+
+  .empty-list {
+    margin-top: 20px;
+  }
+
+  .msg {
+    width: 100%;
+  }
+  /* End Home */
+
+  /* Movie */
+  .review {
+    padding: 0 15px;
+  }
+  /* End Movie */
+
+  /* Dashboard */
+  #movies-dashboard {
+    padding: 0;
+  }
+  
+  .actions-column {
+    width: 140px;
+  }
+  
+  .edit-btn {
+    display: block;
+    margin-bottom: 10px;
+  }
+  /* End Dashboard */
+
+  /* Edit movie */
+  .movie-image-container {
+    margin-top: 1rem;
+  }
+  
+  .fas.fa-bars {
+    color: #F5C518;
+  }
+  /* End Edit movie */
+
+}
