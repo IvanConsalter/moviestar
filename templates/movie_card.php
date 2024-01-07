@@ -10,15 +10,7 @@ if (empty($movie->image)) {
   <div class="card-body">
     <p class="card-rating">
       <i class="fas fa-star"></i>
-      <span class="rating">
-        <?php
-          if (isset($movie->rating)) {
-            echo $movie->rating;
-          } else {
-            echo 'Ainda não há avaliações';
-          }
-        ?>
-      </span>
+      <span class="rating"><?= $movie->rating ?></span>
     </p>
     <h5 class="card-title">
       <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>
